@@ -14,6 +14,11 @@ Chains the **Apollo.io** and **Keyword.com** MCPs end-to-end.
 6. **Decide tracking geography** — heuristic based on company size + industry (local-service businesses get city-level, B2B/SaaS gets national)
 7. **Confirm branding** — fetch effective white-label config, flag typos / name mismatches / missing fields, let you fix in-skill via `update_account_sharing_settings`
 8. **Draft the email** — concise (<130 words), references one concrete observation from the prospect's site, ends with the ViewKey share URL
+9. **(Optional) Tag the contact** — add them to an Apollo List (default name: `agency-prospecting`) so you can filter for processed prospects later. ⚠️ Apollo's `label_names` API overwrites, doesn't append — the skill warns you if the contact has existing labels and offers to preserve them.
+
+### A note on Apollo terminology
+
+What the API calls `label_names` shows up in Apollo's UI as **Lists** (left nav: Search → People → "Lists" filter). There's no separate "Tag" concept in Apollo via this MCP — Lists are what you'd find tagged contacts under.
 
 ## Prerequisites
 

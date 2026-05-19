@@ -225,11 +225,13 @@ Constraints on the draft:
 
 Output the subject and body in two adjacent code blocks so they're easy to copy independently.
 
-### Step 11b — (Optional) Tag the contact in Apollo
+### Step 11b — (Optional) Add the contact to a List in Apollo
 
-After drafting the email, offer to tag the contact in Apollo with a label so the user can find/filter them later.
+After drafting the email, offer to add the contact to an Apollo **List** so the user can find/filter them later.
 
-Ask: *"Want to tag this contact in Apollo with a label so you can find them later? (yes / no / type a custom label name — default is `agency-prospecting`)"*
+**Terminology note:** Apollo's API calls these `label_names`, but in the Apollo UI they show up as **Lists** (left nav: Search → People → "Lists" filter). They are NOT the same as Sequences, Account Stages, or Contact Stages. There is no separate "Tag" concept in Apollo via this MCP.
+
+Ask: *"Want to add this contact to a List in Apollo so you can find them later? (yes / no / type a custom list name — default is `agency-prospecting`)"*
 
 If declined → skip to Step 12.
 
@@ -246,9 +248,9 @@ If accepted:
 
 4. **Warn before overwriting.** If `label_ids` is non-empty, tell the user: *"This contact has N existing label(s) on the Apollo record. The MCP can only overwrite, not append. If I save just the new label, the existing labels will be replaced. Options: (a) proceed and lose existing labels, (b) paste the existing label names so I can preserve them in the update, (c) cancel."*
 
-5. **Call the update.** `mcp__claude_ai_Apollo_io__apollo_contacts_update` with the contact's `id` and `label_names: [<chosen label>, ...any preserved labels>]`.
+5. **Call the update.** `mcp__claude_ai_Apollo_io__apollo_contacts_update` with the contact's `id` and `label_names: [<chosen list name>, ...any preserved list names>]`.
 
-6. **Confirm.** Echo the response back. Surface any error verbatim — do not retry silently.
+6. **Confirm.** The response includes a `labels` array with the full label objects (id, name, modality, etc.). Echo the new list back to the user as confirmation: *"Added to List `agency-prospecting` (id `<label_id>`). You can filter Apollo by List = `agency-prospecting` to see this contact later."* Surface any error verbatim — do not retry silently.
 
 ### Note: Reading custom fields (informational)
 
