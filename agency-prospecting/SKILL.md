@@ -225,6 +225,35 @@ Constraints on the draft:
 
 Output the subject and body in two adjacent code blocks so they're easy to copy independently.
 
+### Step 11b — (Optional) Tag the contact in Apollo
+
+After drafting the email, offer to tag the contact in Apollo with a label so the user can find/filter them later.
+
+Ask: *"Want to tag this contact in Apollo with a label so you can find them later? (yes / no / type a custom label name — default is `agency-prospecting`)"*
+
+If declined → skip to Step 12.
+
+If accepted:
+
+1. **Find the contact in the user's Apollo team account.** Call `mcp__claude_ai_Apollo_io__apollo_contacts_search` with `q_keywords` set to the contact's name + organization (e.g. `"Jeff Culkin Culkin Plumbing"`).
+
+2. **Handle the search result:**
+   - **Exactly one match** → continue to step 3.
+   - **Zero matches** → the prospect came from `apollo_mixed_people_api_search` (the People API), which returns *persons* from Apollo's global database, not *contacts* in the user's team account. The Apollo MCP can't tag a person who isn't a saved contact. Tell the user: *"This person isn't saved as a Contact in your Apollo team account, so I can't tag them via the MCP. To track them, add them manually in Apollo (Contacts → Add Contact). Skipping the tag step."* Continue to Step 12.
+   - **Multiple matches** → list them with company + email and ask the user which one is the right person.
+
+3. **Read existing labels.** The contact record returns a `label_ids` array (e.g. `["689aec1fbf48ad00150de831"]`). Important: `apollo_contacts_update` takes `label_names` (string names, not IDs) and **overwrites the entire list** of labels. There is no append-only mode in the MCP, and there is no MCP tool to resolve label IDs → label names.
+
+4. **Warn before overwriting.** If `label_ids` is non-empty, tell the user: *"This contact has N existing label(s) on the Apollo record. The MCP can only overwrite, not append. If I save just the new label, the existing labels will be replaced. Options: (a) proceed and lose existing labels, (b) paste the existing label names so I can preserve them in the update, (c) cancel."*
+
+5. **Call the update.** `mcp__claude_ai_Apollo_io__apollo_contacts_update` with the contact's `id` and `label_names: [<chosen label>, ...any preserved labels>]`.
+
+6. **Confirm.** Echo the response back. Surface any error verbatim — do not retry silently.
+
+### Note: Reading custom fields (informational)
+
+The Apollo MCP does **not** support writing to custom fields (`typed_custom_fields`) — `apollo_contacts_update` has no slot for them. However, `apollo_contacts_search` *does* return `typed_custom_fields` keyed by field ID. If the user has a custom field they want to read in future skill iterations (e.g. "has this prospect already received a Keyword.com live report?"), the skill can search and inspect the `typed_custom_fields` map. Field IDs are account-specific — there is no MCP tool to look up field-ID-by-label, so the user would need to provide the ID once.
+
 ### Step 12 — Summary
 
 Print one final block with:
