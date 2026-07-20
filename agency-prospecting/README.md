@@ -22,9 +22,9 @@ What the API calls `label_names` shows up in Apollo's UI as **Lists** (left nav:
 
 ## Prerequisites
 
-- **Claude Code** (or any Claude Agent SDK client that supports skills)
-- **Apollo.io MCP** connected via `/mcp`
-- **Keyword.com MCP** connected with the `write:data` scope (required for `add_project` and `add_keywords`)
+- **Claude Code** (app or CLI)
+- **A Keyword.com account** with the `write:data` scope — no account yet? Free trial (100 keywords, 14 days) at [app.keyword.com/users/signup](https://app.keyword.com/users/signup). The Keyword.com MCP is registered automatically via the bundled `keyword-com-base` dependency; you just complete the OAuth login.
+- **Apollo.io** — this skill uses Apollo's connector tools, so add Apollo from the **Connectors directory** (app: **+ → Connectors → Apollo**; or run `/mcp`). It is *not* bundled by the plugin (a bundled copy would load under the wrong tool namespace).
 - *(Recommended)* **Keyword.com white-label** configured — agency logo, brand color, optional custom subdomain. The skill verifies branding at the end of every run, but pre-configuring it saves a remediation step.
 
 ## Costs per run
@@ -35,22 +35,27 @@ What the API calls `label_names` shows up in Apollo's UI as **Lists** (left nav:
 
 ## Installation
 
-### Manual (always works)
-```bash
-git clone https://github.com/keyword-rank-tracker/skills ~/keyword-skills
-ln -s ~/keyword-skills/agency-prospecting ~/.claude/skills/agency-prospecting
-```
+Ships as a **plugin**. Installing it auto-pulls the `keyword-com-base` dependency (registers the Keyword.com MCP once); you then add Apollo from Connectors.
 
-### Via the Skills CLI (if your version supports subdirectory installs)
+### CLI
 ```bash
-npx skills add github:keyword-rank-tracker/skills/agency-prospecting
+claude plugin marketplace add benjamin-thorn/skills
+/plugin install agency-prospecting@keyword-com-skills   # + keyword-com-base
+/mcp        # keyword-com → Authenticate (grant write:data)
 ```
+Then add **Apollo** via **+ → Connectors → Apollo** (or `/mcp`).
+
+### Desktop / web app
+1. **+ → Plugins → Add marketplace →** `benjamin-thorn/skills`
+2. Install **agency-prospecting**
+3. `/mcp` → **keyword-com** → **Authenticate**
+4. **+ → Connectors → Apollo** → connect
 
 ## Usage
 
-In Claude Code:
+In Claude Code, run the namespaced command:
 ```
-/agency-prospecting
+/agency-prospecting:agency-prospecting
 ```
 
 Then describe your prospect in plain English. Examples:

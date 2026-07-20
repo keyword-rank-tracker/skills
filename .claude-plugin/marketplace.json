@@ -10,13 +10,33 @@
   },
   "plugins": [
     {
+      "name": "keyword-com-base",
+      "source": "./keyword-com-base",
+      "version": "1.0.0",
+      "description": "Shared base plugin that registers the Keyword.com MCP server.",
+      "category": "seo",
+      "tags": ["keyword.com", "mcp"],
+      "strict": false
+    },
+    {
       "name": "project-setup",
       "source": "./project-setup",
       "version": "1.0.0",
-      "description": "Set up a Keyword.com rank-tracking project from a URL: crawl the site's pages and blog, distill product + content topics, expand into real MSV-backed keywords, and create the tagged project. Bundles the Keyword.com MCP.",
+      "description": "Set up a Keyword.com rank-tracking project from a URL: crawl the site's pages and blog, distill product + content topics, expand into real MSV-backed keywords, and create the tagged project.",
       "category": "seo",
       "tags": ["keyword.com", "seo", "rank-tracking", "keyword-research", "project-setup"],
-      "strict": false
+      "strict": false,
+      "dependencies": ["keyword-com-base"]
+    },
+    {
+      "name": "agency-prospecting",
+      "source": "./agency-prospecting",
+      "version": "1.0.0",
+      "description": "End-to-end SEO prospect outreach: Apollo contact search + enrich → seed keyword from their site → white-labeled Keyword.com ViewKey report → personalized cold-email draft. Pulls in the keyword-com-base dependency for the Keyword.com MCP; Apollo is added via Connectors.",
+      "category": "marketing",
+      "tags": ["keyword.com", "apollo", "prospecting", "outreach", "cold-email", "viewkey", "seo"],
+      "strict": false,
+      "dependencies": ["keyword-com-base"]
     }
   ]
 }
