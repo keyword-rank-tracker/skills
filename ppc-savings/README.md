@@ -30,16 +30,16 @@ These came out of real-world testing, not theory:
 ## Prerequisites
 
 - **Claude Code** (app or CLI)
-- **A Keyword.com account** — read scope is enough; this skill writes nothing. No account yet? Free trial at [app.keyword.com/users/signup](https://app.keyword.com/users/signup). The Keyword.com MCP is registered automatically via the bundled `keyword-com-base` dependency; you just complete the OAuth login.
+- **A Keyword.com account** — read scope is enough; this skill writes nothing. No account yet? Free trial at [app.keyword.com/users/signup](https://app.keyword.com/users/signup). The plugin bundles the Keyword.com MCP, so it's registered automatically; you just complete the OAuth login.
 
 ## Installation
 
-Ships as a **plugin**. Installing it auto-pulls the `keyword-com-base` dependency (registers the Keyword.com MCP once).
+Ships as a **plugin** that bundles the Keyword.com MCP (registered on install).
 
 ### CLI
 ```bash
 claude plugin marketplace add benjamin-thorn/skills
-/plugin install ppc-savings@keyword-com-skills   # + keyword-com-base
+/plugin install ppc-savings@keyword-com-skills
 /mcp        # keyword-com → Authenticate
 ```
 

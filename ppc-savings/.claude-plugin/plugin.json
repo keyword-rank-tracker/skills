@@ -1,5 +1,5 @@
 {
   "name": "ppc-savings",
   "version": "1.0.0",
-  "description": "Quantify the equivalent Google Ads spend a site's organic rankings replace. For a Keyword.com project (or tag slice), multiplies each top-ranking keyword's CPC by its estimated organic traffic into a client-ready 'PPC savings' report. Installs the keyword-com-base dependency for the Keyword.com MCP."
+  "description": "Quantify the equivalent Google Ads spend a site's organic rankings replace. For a Keyword.com project (or tag slice), multiplies each top-ranking keyword's CPC by its estimated organic traffic into a client-ready 'PPC savings' report. Bundles the Keyword.com MCP."
 }

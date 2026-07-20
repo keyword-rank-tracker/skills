@@ -10,43 +10,31 @@
   },
   "plugins": [
     {
-      "name": "keyword-com-base",
-      "source": "./keyword-com-base",
-      "version": "1.0.0",
-      "description": "Shared base plugin that registers the Keyword.com MCP server.",
-      "category": "seo",
-      "tags": ["keyword.com", "mcp"],
-      "strict": false
-    },
-    {
       "name": "project-setup",
       "source": "./project-setup",
       "version": "1.0.0",
-      "description": "Set up a Keyword.com rank-tracking project from a URL: crawl the site's pages and blog, distill product + content topics, expand into real MSV-backed keywords, and create the tagged project.",
+      "description": "Set up a Keyword.com rank-tracking project from a URL: crawl the site's pages and blog, distill product + content topics, expand into real MSV-backed keywords, and create the tagged project. Bundles the Keyword.com MCP.",
       "category": "seo",
       "tags": ["keyword.com", "seo", "rank-tracking", "keyword-research", "project-setup"],
-      "strict": false,
-      "dependencies": ["keyword-com-base"]
+      "strict": false
     },
     {
       "name": "agency-prospecting",
       "source": "./agency-prospecting",
       "version": "1.0.0",
-      "description": "End-to-end SEO prospect outreach: Apollo contact search + enrich → seed keyword from their site → white-labeled Keyword.com ViewKey report → personalized cold-email draft. Pulls in the keyword-com-base dependency for the Keyword.com MCP; Apollo is added via Connectors.",
+      "description": "End-to-end SEO prospect outreach: Apollo contact search + enrich → seed keyword from their site → white-labeled Keyword.com ViewKey report → personalized cold-email draft. Bundles the Keyword.com MCP; Apollo is added via Connectors.",
       "category": "marketing",
       "tags": ["keyword.com", "apollo", "prospecting", "outreach", "cold-email", "viewkey", "seo"],
-      "strict": false,
-      "dependencies": ["keyword-com-base"]
+      "strict": false
     },
     {
       "name": "ppc-savings",
       "source": "./ppc-savings",
       "version": "1.0.0",
-      "description": "Quantify the equivalent Google Ads spend a site's organic rankings replace: CPC × estimated organic traffic for every top-ranking keyword in a Keyword.com project, totalled into a client-ready 'PPC savings' report.",
+      "description": "Quantify the equivalent Google Ads spend a site's organic rankings replace: CPC × estimated organic traffic for every top-ranking keyword in a Keyword.com project, totalled into a client-ready 'PPC savings' report. Bundles the Keyword.com MCP.",
       "category": "seo",
       "tags": ["keyword.com", "seo", "ppc", "traffic-value", "reporting", "roi"],
-      "strict": false,
-      "dependencies": ["keyword-com-base"]
+      "strict": false
     }
   ]
 }
