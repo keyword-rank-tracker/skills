@@ -1,8 +1,0 @@
-{
-  "mcpServers": {
-    "keyword-com": {
-      "type": "http",
-      "url": "https://app.keyword.com/mcp"
-    }
-  }
-}
