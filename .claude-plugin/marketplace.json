@@ -1,0 +1,22 @@
+{
+  "name": "keyword-com-skills",
+  "owner": {
+    "name": "Keyword.com",
+    "email": "benjamin.thornton@keyword.com"
+  },
+  "metadata": {
+    "description": "Claude Code skills for SEO teams and Keyword.com users — rank tracking, keyword research, and reporting workflows built on the Keyword.com MCP.",
+    "visibility": "public"
+  },
+  "plugins": [
+    {
+      "name": "project-setup",
+      "source": "./project-setup",
+      "version": "1.0.0",
+      "description": "Set up a Keyword.com rank-tracking project from a URL: crawl the site's pages and blog, distill product + content topics, expand into real MSV-backed keywords, and create the tagged project. Bundles the Keyword.com MCP.",
+      "category": "seo",
+      "tags": ["keyword.com", "seo", "rank-tracking", "keyword-research", "project-setup"],
+      "strict": false
+    }
+  ]
+}

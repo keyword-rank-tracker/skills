@@ -50,25 +50,36 @@ No Apollo, no browser install. The crawl uses only `WebFetch` against the site's
 
 ## Installation
 
-### Manual (always works)
+`project-setup` ships as a **plugin** (so it works in the Claude Code app, not just the CLI) and bundles the Keyword.com MCP server, so installing it auto-registers `keyword-com` — you just complete the OAuth login.
+
+### CLI
+
 ```bash
-git clone https://github.com/keyword-rank-tracker/skills ~/keyword-skills
-ln -s ~/keyword-skills/project-setup ~/.claude/skills/project-setup
+# 1. Add this marketplace
+claude plugin marketplace add benjamin-thorn/skills
+# 2. Install the plugin
+/plugin install project-setup@keyword-com-skills
+# 3. Authenticate the bundled Keyword.com MCP (grant write:data)
+/mcp        # select keyword-com → Authenticate
 ```
 
-### Via the Skills CLI (if your version supports subdirectory installs)
-```bash
-npx skills add github:keyword-rank-tracker/skills/project-setup
-```
+### Desktop / web app
+
+1. **+** button → **Plugins** → **Add marketplace** → `benjamin-thorn/skills`
+2. Install **project-setup**
+3. Run `/mcp` → **keyword-com** → **Authenticate** (Keyword.com OAuth, grant `write:data`)
+
+Don't have a Keyword.com account? Start a free trial (100 keywords, 14 days) at [app.keyword.com/users/signup](https://app.keyword.com/users/signup) first — the OAuth step needs one.
 
 ## Usage
 
-In Claude Code:
+In Claude Code, run the namespaced command:
 ```
-/project-setup
+/project-setup:project-setup
 ```
+…or just say *"set up rank tracking for example.com."*
 
-Then give it the site URL. The skill asks for a target country/language and a keyword budget, reads the site, and walks you through topic approval → keyword approval → project creation.
+Give it the site URL; the skill asks for country/language, device(s), and a keyword budget, reads the site, and walks you through topic approval → keyword approval → project creation.
 
 ## Caveats
 
