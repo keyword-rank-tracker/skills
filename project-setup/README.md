@@ -50,7 +50,7 @@ No Apollo, no browser install. The crawl uses only `WebFetch` against the site's
 
 ## Installation
 
-`project-setup` ships as a **plugin** (so it works in the Claude Code app, not just the CLI). It depends on a small `keyword-com-base` plugin that registers the Keyword.com MCP — installing `project-setup` pulls that in automatically (once, even if you also install other Keyword.com plugins), so `keyword-com` is registered and you just complete the OAuth login.
+`project-setup` ships as a **plugin** (so it works in the Claude Code app, not just the CLI) and **bundles the Keyword.com MCP** — installing it registers `keyword-com` automatically, and you just complete the OAuth login. (If you install several Keyword.com plugins, Claude Code dedupes the server to a single connection.)
 
 ### CLI
 

@@ -1,5 +1,0 @@
-{
-  "name": "keyword-com-base",
-  "version": "1.0.0",
-  "description": "Shared base plugin: registers the Keyword.com MCP server. Pulled in as a dependency by the skill plugins."
-}

@@ -29,20 +29,17 @@ Each links to its own README for the full workflow, prerequisites, and caveats.
 
 ## How the marketplace is organized
 
-The repo root is the marketplace; each top-level folder is a plugin, listed in [`.claude-plugin/marketplace.json`](./.claude-plugin/marketplace.json):
-
-- **`keyword-com-base`** — a shared base plugin that registers the Keyword.com MCP server. The three skill plugins declare it as a `dependency`, so installing any of them pulls it in **once** — the MCP is never registered twice, no matter how many you install.
-- **`project-setup`, `agency-prospecting`, `ppc-savings`** — the skill plugins.
+The repo root is the marketplace; each top-level folder is a plugin, listed in [`.claude-plugin/marketplace.json`](./.claude-plugin/marketplace.json). Each skill plugin **bundles the Keyword.com MCP** in its own `.mcp.json`, so installing it registers the server automatically. If you install more than one, Claude Code **dedupes the identical server to a single connection** — so there's no double-registration to worry about.
 
 ## Prerequisites
 
 - **Claude Code** (app or CLI)
-- **A Keyword.com account** with the `write:data` scope for plugins that create/modify data (`project-setup`, `agency-prospecting`); read scope is enough for `ppc-savings`. The Keyword.com MCP is registered automatically by `keyword-com-base`; you complete the OAuth login via `/mcp`.
+- **A Keyword.com account** with the `write:data` scope for plugins that create/modify data (`project-setup`, `agency-prospecting`); read scope is enough for `ppc-savings`. Each plugin bundles the Keyword.com MCP, so it's registered on install; you complete the OAuth login via `/mcp`.
 - **Apollo** — only for `agency-prospecting`, added from the Connectors directory (**+ → Connectors → Apollo**), not bundled.
 
 ## Contributing
 
-Issues and PRs welcome. To add a skill: package it as a plugin (`<name>/.claude-plugin/plugin.json` + `<name>/skills/<name>/SKILL.md`), add an entry to `.claude-plugin/marketplace.json`, and declare `dependencies: ["keyword-com-base"]` if it needs the Keyword.com MCP.
+Issues and PRs welcome. To add a skill: package it as a plugin (`<name>/.claude-plugin/plugin.json` + `<name>/skills/<name>/SKILL.md`), add an entry to `.claude-plugin/marketplace.json`, and include a `.mcp.json` bundling the Keyword.com MCP if it needs it.
 
 ## License
 
