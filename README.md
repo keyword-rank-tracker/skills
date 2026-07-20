@@ -7,6 +7,8 @@ A collection of Claude Code skills for SEO agencies and Keyword.com users. Each 
 | Skill | What it does |
 |---|---|
 | [agency-prospecting](./agency-prospecting) | End-to-end prospect outreach: Apollo search → enrich → keyword research → ranking report → personalized cold email draft. |
+| [project-setup](./project-setup) | Set up a Keyword.com tracking project from a URL (or a topic list you supply): crawl → topics → keyword research per topic → a project with keywords tagged by topic, plus a `branded` tag for brand-defense tracking. |
+| [ppc-savings](./ppc-savings) | Quantifies SEO's dollar value: CPC × estimated traffic for every keyword ranking 1–3 → "your rankings replace $X/month in Google Ads spend", plus the upside from pushing positions 4–10 into the top 3. |
 
 More skills will be added here over time — keep an eye on this repo or watch it on GitHub.
 
