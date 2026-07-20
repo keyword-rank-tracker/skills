@@ -56,7 +56,7 @@ No Apollo, no browser install. The crawl uses only `WebFetch` against the site's
 
 ```bash
 # 1. Add this marketplace
-claude plugin marketplace add benjamin-thorn/skills
+claude plugin marketplace add benjamin-thorn/keyword-com-skills
 # 2. Install the plugin
 /plugin install project-setup@keyword-com-skills
 # 3. Authenticate the bundled Keyword.com MCP (grant write:data)
@@ -65,7 +65,7 @@ claude plugin marketplace add benjamin-thorn/skills
 
 ### Desktop / web app
 
-1. **+** button → **Plugins** → **Add marketplace** → `benjamin-thorn/skills`
+1. **+** button → **Plugins** → **Add marketplace** → `benjamin-thorn/keyword-com-skills`
 2. Install **project-setup**
 3. Run `/mcp` → **keyword-com** → **Authenticate** (Keyword.com OAuth, grant `write:data`)
 

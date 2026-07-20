@@ -6,14 +6,14 @@ A **Claude Code plugin marketplace** of SEO workflows built on the [Keyword.com]
 
 ```bash
 # 1. Add this marketplace
-claude plugin marketplace add benjamin-thorn/skills
+claude plugin marketplace add benjamin-thorn/keyword-com-skills
 # 2. Install a plugin (see the table below)
 /plugin install project-setup@keyword-com-skills
 # 3. Authenticate the Keyword.com MCP (pulled in automatically)
 /mcp        # keyword-com → Authenticate
 ```
 
-In the **desktop / web app**: **+ → Plugins → Add marketplace →** `benjamin-thorn/skills`, then install the plugin you want.
+In the **desktop / web app**: **+ → Plugins → Add marketplace →** `benjamin-thorn/keyword-com-skills`, then install the plugin you want.
 
 No Keyword.com account yet? Start a free trial (100 keywords, 14 days) at [app.keyword.com/users/signup](https://app.keyword.com/users/signup) — the OAuth step needs one.
 

@@ -38,13 +38,13 @@ Ships as a **plugin** that bundles the Keyword.com MCP (registered on install).
 
 ### CLI
 ```bash
-claude plugin marketplace add benjamin-thorn/skills
+claude plugin marketplace add benjamin-thorn/keyword-com-skills
 /plugin install ppc-savings@keyword-com-skills
 /mcp        # keyword-com → Authenticate
 ```
 
 ### Desktop / web app
-**+ → Plugins → Add marketplace →** `benjamin-thorn/skills` → install **ppc-savings** → `/mcp` → **keyword-com** → **Authenticate**.
+**+ → Plugins → Add marketplace →** `benjamin-thorn/keyword-com-skills` → install **ppc-savings** → `/mcp` → **keyword-com** → **Authenticate**.
 
 ## Usage
 

@@ -39,14 +39,14 @@ Ships as a **plugin** that bundles the Keyword.com MCP (registered on install); 
 
 ### CLI
 ```bash
-claude plugin marketplace add benjamin-thorn/skills
+claude plugin marketplace add benjamin-thorn/keyword-com-skills
 /plugin install agency-prospecting@keyword-com-skills
 /mcp        # keyword-com → Authenticate (grant write:data)
 ```
 Then add **Apollo** via **+ → Connectors → Apollo** (or `/mcp`).
 
 ### Desktop / web app
-1. **+ → Plugins → Add marketplace →** `benjamin-thorn/skills`
+1. **+ → Plugins → Add marketplace →** `benjamin-thorn/keyword-com-skills`
 2. Install **agency-prospecting**
 3. `/mcp` → **keyword-com** → **Authenticate**
 4. **+ → Connectors → Apollo** → connect
