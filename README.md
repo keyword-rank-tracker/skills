@@ -1,52 +1,49 @@
-# skills
+# Keyword.com Claude Code skills
 
-A collection of Claude Code skills for SEO agencies and Keyword.com users. Each skill is a self-contained workflow built on top of the [Apollo.io](https://apollo.io), [Keyword.com](https://keyword.com), and other MCP integrations available in Claude Code.
+A **Claude Code plugin marketplace** of SEO workflows built on the [Keyword.com](https://keyword.com) MCP (and, for prospecting, [Apollo.io](https://apollo.io)). Install a plugin and drive real rank-tracking, keyword research, and reporting from Claude Code — in the app or the CLI.
 
-## Available skills
-
-| Skill | What it does |
-|---|---|
-| [agency-prospecting](./agency-prospecting) | End-to-end prospect outreach: Apollo search → enrich → keyword research → ranking report → personalized cold email draft. |
-| [project-setup](./project-setup) | Set up a Keyword.com tracking project from a URL (or a topic list you supply): crawl → topics → keyword research per topic → a project with keywords tagged by topic, plus a `branded` tag for brand-defense tracking. |
-| [ppc-savings](./ppc-savings) | Quantifies SEO's dollar value: CPC × estimated traffic for every keyword ranking 1–3 → "your rankings replace $X/month in Google Ads spend", plus the upside from pushing positions 4–10 into the top 3. |
-
-More skills will be added here over time — keep an eye on this repo or watch it on GitHub.
-
-## Installation
-
-### Manual (always works)
-
-Clone the repo and symlink the skill you want into your Claude skills directory:
+## Quick start
 
 ```bash
-git clone https://github.com/keyword-rank-tracker/skills ~/keyword-skills
-ln -s ~/keyword-skills/agency-prospecting ~/.claude/skills/agency-prospecting
+# 1. Add this marketplace
+claude plugin marketplace add benjamin-thorn/skills
+# 2. Install a plugin (see the table below)
+/plugin install project-setup@keyword-com-skills
+# 3. Authenticate the Keyword.com MCP (pulled in automatically)
+/mcp        # keyword-com → Authenticate
 ```
 
-Repeat the `ln -s` line for each skill you want to install.
+In the **desktop / web app**: **+ → Plugins → Add marketplace →** `benjamin-thorn/skills`, then install the plugin you want.
 
-### Via the Skills CLI
+No Keyword.com account yet? Start a free trial (100 keywords, 14 days) at [app.keyword.com/users/signup](https://app.keyword.com/users/signup) — the OAuth step needs one.
 
-If you use the [Skills CLI](https://skills.sh), subdirectory installs from a monorepo may be supported via:
+## Plugins
 
-```bash
-npx skills add github:keyword-rank-tracker/skills/agency-prospecting
-```
+| Plugin | What it does | Install |
+|---|---|---|
+| **[project-setup](./project-setup)** | Turn a URL into a fully populated, tag-organized tracking project — crawl the site's pages + blog, distill product & content topics, expand into real keywords, and create the tagged project. | `/plugin install project-setup@keyword-com-skills` |
+| **[agency-prospecting](./agency-prospecting)** | End-to-end prospect outreach: Apollo contact search → enrich → seed keyword → white-labeled ViewKey report → personalized cold-email draft. | `/plugin install agency-prospecting@keyword-com-skills` |
+| **[ppc-savings](./ppc-savings)** | Quantify what organic rankings are worth: CPC × estimated organic traffic for top-ranking keywords → a client-ready "equivalent ad spend" report. | `/plugin install ppc-savings@keyword-com-skills` |
 
-(If the CLI doesn't support the subdirectory form on your version, fall back to the manual install above.)
+Each links to its own README for the full workflow, prerequisites, and caveats.
+
+## How the marketplace is organized
+
+The repo root is the marketplace; each top-level folder is a plugin, listed in [`.claude-plugin/marketplace.json`](./.claude-plugin/marketplace.json):
+
+- **`keyword-com-base`** — a shared base plugin that registers the Keyword.com MCP server. The three skill plugins declare it as a `dependency`, so installing any of them pulls it in **once** — the MCP is never registered twice, no matter how many you install.
+- **`project-setup`, `agency-prospecting`, `ppc-savings`** — the skill plugins.
 
 ## Prerequisites
 
-Each skill has its own prerequisites — see the individual skill's README for details. Common requirements across the collection:
-
-- **Claude Code** (or any Claude Agent SDK client that supports skills)
-- One or more MCP integrations connected via `/mcp` (Apollo, Keyword.com, etc. — varies by skill)
-- A Keyword.com account with the relevant scopes if the skill writes data
+- **Claude Code** (app or CLI)
+- **A Keyword.com account** with the `write:data` scope for plugins that create/modify data (`project-setup`, `agency-prospecting`); read scope is enough for `ppc-savings`. The Keyword.com MCP is registered automatically by `keyword-com-base`; you complete the OAuth login via `/mcp`.
+- **Apollo** — only for `agency-prospecting`, added from the Connectors directory (**+ → Connectors → Apollo**), not bundled.
 
 ## Contributing
 
-Issues and PRs welcome. If you've built a skill that uses the Keyword.com MCP and want it added here, open an issue with a link to your repo or branch.
+Issues and PRs welcome. To add a skill: package it as a plugin (`<name>/.claude-plugin/plugin.json` + `<name>/skills/<name>/SKILL.md`), add an entry to `.claude-plugin/marketplace.json`, and declare `dependencies: ["keyword-com-base"]` if it needs the Keyword.com MCP.
 
 ## License
 
-MIT — see [LICENSE](./LICENSE). Each skill in this repo is covered by the same license unless its own directory contains a `LICENSE` file overriding it.
+MIT — see [LICENSE](./LICENSE).

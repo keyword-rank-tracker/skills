@@ -1,0 +1,5 @@
+{
+  "name": "agency-prospecting",
+  "version": "1.0.0",
+  "description": "End-to-end SEO prospect outreach: find a contact in Apollo, enrich them, pick a non-branded seed keyword from their site, build a white-labeled Keyword.com ViewKey ranking report, and draft a personalized cold email. Installs the keyword-com-base dependency for the Keyword.com MCP; Apollo is added via the Connectors directory (see README)."
+}
