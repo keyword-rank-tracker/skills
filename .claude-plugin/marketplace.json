@@ -37,6 +37,16 @@
       "tags": ["keyword.com", "apollo", "prospecting", "outreach", "cold-email", "viewkey", "seo"],
       "strict": false,
       "dependencies": ["keyword-com-base"]
+    },
+    {
+      "name": "ppc-savings",
+      "source": "./ppc-savings",
+      "version": "1.0.0",
+      "description": "Quantify the equivalent Google Ads spend a site's organic rankings replace: CPC × estimated organic traffic for every top-ranking keyword in a Keyword.com project, totalled into a client-ready 'PPC savings' report.",
+      "category": "seo",
+      "tags": ["keyword.com", "seo", "ppc", "traffic-value", "reporting", "roi"],
+      "strict": false,
+      "dependencies": ["keyword-com-base"]
     }
   ]
 }
