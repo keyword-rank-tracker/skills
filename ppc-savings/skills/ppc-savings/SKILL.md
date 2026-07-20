@@ -95,17 +95,19 @@ your top-3 organic rankings already deliver.
 Pushing these into the top 3 would add ${tier2_potential}/mo (${tier2_annual}/yr)
 of equivalent ad value.
 
-## Methodology & caveats
-- Savings = CPC × estimated monthly organic clicks, per keyword ranking 1–3.
-  This is *equivalent ad spend* (the Ahrefs/Semrush "traffic value" method) —
-  a directional measure of SEO's substitution value, not a literal invoice.
+---
+*Figures are **equivalent ad spend** — what these clicks would cost in Google Ads — not revenue. Directional. Ask for the full methodology (dedupe, CTR model, exclusions) any time.*
+```
+
+**Keep the report lean — do not print the full methodology by default.** The one-line caveat above is the *only* mandatory disclosure, because it's the guardrail against the number being misread as literal revenue. Everything else (dedupe count, CTR model, no-CPC count, outliers excluded, branded rationale, local-MSV note) stays computed internally but **out of the deliverable**.
+
+**Only if the user asks** "how did you calculate this?", "show your methodology", "is that number real?", or similar — expand the full breakdown then:
+- Savings = CPC × estimated monthly organic clicks, per keyword ranking 1–3 (the Ahrefs/Semrush "traffic value" method).
 - Traffic estimates are CTR-modelled from rank + search volume.
 - {N_nocpc} keywords had no CPC data → total is understated.
 - {dupes} device duplicates removed; {fallbacks} rows used CTR-curve fallback.
-- {N_outliers} keywords excluded by sanity check (null/foreign ranking_url or
-  off-topic) — they would have added ${fake_savings}/mo: {list them}.
+- {N_outliers} keywords excluded by sanity check (null/foreign ranking_url or off-topic) — they would have added the amount you'd list per keyword.
 - {if local project} MSV is national; local tracking may overstate volume.
-```
 
 Round dollar figures: above 1,000 round to the nearest 10; above 10,000 round to the nearest 100 — false precision reads as fake. (Note: never write a dollar sign followed by a digit in this file — Claude Code substitutes `$<digit>` patterns with skill arguments.)
 
